@@ -12,7 +12,7 @@ const dbConnection = async () => {
     console.log("Connection with MongoDB: ON");
   } catch (e) {//e captura el error del try
       console.log("Error connectiong to MongoDB: ",e);//se pone la e para saber que error se presento
-      throw new Error("Error connectiong to MongoDB")//en las consolas nos ayuda a mostrar el mensaje anterior de una forma mas limpia que el anterior
+      throw new Error("Error connectiong to MongoDB");//en las consolas nos ayuda a mostrar el mensaje anterior de una forma mas limpia que el anterior
   }
 };
 
