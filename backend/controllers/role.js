@@ -1,4 +1,4 @@
-const Role = require("../models/role"); //para importar el role Role es cuando es propio y externo e minusculas
+const Role = require("../models/role"); //para importar  Role es cuando es propio en mayusculas y externo en minusculas
 
 const registerRole = async (req, res) => {
   //bdoy es el cuerpo de json lo que trae por dentro del json
@@ -21,7 +21,7 @@ const registerRole = async (req, res) => {
 
 const listRole = async (req, res) => {
   const role = await Role.find();
-  if (!role) return res.status(401).send("No role");
+  if (!role || role.length === 0) return res.status(401).send("No role");
   return res.status(200).send({ role });
 };
 
