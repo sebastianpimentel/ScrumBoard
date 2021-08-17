@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const Role = require("../models/role");
 const bcrypt = require("bcrypt"); //permite encriptar contraseñas
-const user = require("../models/user");
 
 const registerUser = async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.password)
@@ -37,7 +36,7 @@ const registerUser = async (req, res) => {
 };
 const listUser = async (req, res) => {
   let user = await User.find({ name: new RegExp(req.params["name"], "i") })
-    .populate("roleId")
+    .populate("roleId")//
     .exec();
   if (!user || user.length === 0) return res.status(400).send("No users");
   return res.status(200).send({ user });

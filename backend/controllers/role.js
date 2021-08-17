@@ -5,10 +5,10 @@ const registerRole = async (req, res) => {
   if (!req.body.name || !req.body.description)
     return res.status(401).send("Process failed: Incomplete data");
 
-  const existingRole = await Role.findOne({ name: req.body.name });
+  const existingRole = await Role.findOne({ name: req.body.name });//buscar role por el nombre
   if (existingRole) return res.status(401).send("Process failed: role already exist");
 
-  const role = new Role({
+  let role = new Role({//lo que se va a guardar
     name: req.body.name,
     description: req.body.description,
     dbStatus: true
@@ -20,7 +20,7 @@ const registerRole = async (req, res) => {
 };
 
 const listRole = async (req, res) => {
-  const role = await Role.find();
+  const role = await Role.find();//busca todo
   if (!role || role.length === 0) return res.status(401).send("No role");
   return res.status(200).send({ role });
 };
